@@ -168,17 +168,17 @@ public class EarthquakeCityMap extends PApplet {
 		// TODO: Implement this method
 		// Hint: You probably want a helper method or two to keep this code
 		// from getting too long/disorganized
-		if(lastClicked != null) {
+		if (lastClicked != null) {
 			lastClicked.setClicked(false);
 			lastClicked = null;
 			unhideMarkers();
 		} else {
 			checkForMarkedCities(quakeMarkers);
 			checkForMarkedCities(cityMarkers);
-			if(lastClicked instanceof EarthquakeMarker) {
+			if (lastClicked instanceof EarthquakeMarker) {
 				checkForMarkedCities(quakeMarkers);
 				checkForMarkedCities(cityMarkers);
-			} else if(lastClicked instanceof CityMarker) {
+			} else if (lastClicked instanceof CityMarker) {
 				checkForMarkedCities(cityMarkers);
 				checkForMarkedCities(quakeMarkers);
 			}
@@ -276,11 +276,11 @@ public class EarthquakeCityMap extends PApplet {
 
 	private void checkForMarkedCities(List<Marker> markers) {
 		// loops through cities for a click and set accordingly
-		for(Marker i : markers) {
-			if(lastClicked != null) {
+		for (Marker i : markers) {
+			if (lastClicked != null) {
 				break;
 			}
-			if(!i.isHidden() && i.isInside(map, mouseX, mouseY)) {
+			if (!i.isHidden() && i.isInside(map, mouseX, mouseY)) {
 				lastClicked = (CommonMarker) i;
 				lastClicked.setClicked(true);
 				break;
@@ -321,7 +321,8 @@ public class EarthquakeCityMap extends PApplet {
 
 		// some countries represented it as MultiMarker
 		// looping over SimplePolygonMarkers which make them up to use isInsideByLoc
-		if (country.getClass() == MultiMarker.class) {
+		// loops
+		if (country.getClass() == MultiMarker.class) { 
 
 			// looping over markers making up MultiMarker
 			for (Marker marker : ((MultiMarker) country).getMarkers()) {
